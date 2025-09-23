@@ -1,1 +1,21 @@
 /* Admin CSS */
+.subscription .subscriptionHeader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    top: 0; 
+}
+
+.subscription .subscriptionHeader h1 {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.subscription .subscriptionHeader button {
+    padding: 10px;
+    border: 1.8px solid #1666a0;
+    color: #1769a3;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 5px;
+}
