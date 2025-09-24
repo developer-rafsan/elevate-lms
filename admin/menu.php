@@ -85,11 +85,6 @@ function elevate_lms_include_template( $template_file, $fallback_title ) {
 
     if ( file_exists( $file ) ) {
         include $file;
-    } else {
-        echo '<div class="wrap">';
-        echo '<h1>' . esc_html__( $fallback_title, 'pixelcode' ) . '</h1>';
-        echo '<p>' . esc_html__( 'Template file not found: ' . esc_html($file), 'pixelcode' ) . '</p>';
-        echo '</div>';
     }
 }
 
@@ -108,7 +103,7 @@ function elevate_lms_add_class_page() {
 }
 
 function elevate_lms_subscription_page() {
-    elevate_lms_include_template( 'subscription.php', 'Create Subscription' );
+    elevate_lms_include_template( 'subscription.php', 'Subscription' );
 }
 
 function elevate_lms_students_page() {

@@ -39,6 +39,14 @@ function elevate_lms_admin_assets( $hook ) {
         null
     );
 
+    // Font Awesome CDN
+    wp_enqueue_style(
+        'font-awesome-cdn',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+        [],
+        '6.4.0'
+    );
+
     // Load admin JS
     wp_enqueue_script(
         'elevate-lms-admin-js',
