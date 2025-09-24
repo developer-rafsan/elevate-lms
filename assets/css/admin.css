@@ -1,1 +1,208 @@
 /* Admin CSS */
+.subscription .header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  top: 0;
+}
+
+.subscription .header h1 {
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.subscription .header button {
+  padding: 10px;
+  border: 1.8px solid #1666a0;
+  color: #1769a3;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.subscription .filter {
+  margin: 0px;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.subscription .filter button {
+  border: none;
+  padding: 0;
+  font-weight: 500;
+  cursor: pointer;
+  color: #1666a0;
+}
+
+.subscription .filter button.active {
+  color: #000;
+  font-weight: 700;
+}
+
+.subscription .action {
+  margin: 0;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.subscription .action select {
+  padding: 0px 20px;
+}
+
+.subscription .action button {
+  padding: 4px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #1666a0;
+  border-radius: 4px;
+}
+
+.subscription .action button p {
+  margin: 0;
+  color: #1666a0;
+}
+
+.pricing-table {
+  width: 90%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-family: system-ui, Arial, sans-serif;
+}
+.pricing-table th,
+.pricing-table td {
+  padding: 12px 14px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+.pricing-table thead th {
+  background: #fafafa;
+  font-weight: 600;
+}
+.pricing-table tbody tr:nth-child(even) {
+  background: #fff;
+}
+.pricing-table .price {
+  font-weight: 700;
+}
+.pricing-table .offer {
+  color: #d9534f;
+} 
+.pricing-table .regular {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 8px;
+  font-weight: 500;
+}
+.pricing-table .action-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: #0073aa;
+  color: #fff;
+  font-weight: 600;
+  margin-right: 10px;
+}
+@media (max-width: 720px) {
+  .pricing-table thead {
+    display: none;
+  }
+  .pricing-table,
+  .pricing-table tbody,
+  .pricing-table tr,
+  .pricing-table td {
+    display: block;
+    width: 100%;
+  }
+  .pricing-table td {
+    box-sizing: border-box;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .pricing-table td[data-label]:before {
+    content: attr(data-label) ": ";
+    font-weight: 700;
+    display: inline-block;
+    width: 110px;
+  }
+}
+
+.add-subscription-form {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  box-shadow: 1px 1px 5px #11111123;
+  transform: translateX(110%);
+  transition: .5s;
+}
+
+.add-subscription-form.active {
+  transform: translateX(0%);
+}
+
+.add-subscription-form .card{
+  height: 100%;
+  position: relative;
+  padding: 30px;
+}
+
+.add-subscription-form .card .card-header h5 { 
+  font-size: 1.2rem;
+  margin: 0;
+  font-family: 400;
+}
+
+.add-subscription-form .card .card-header button{
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.add-subscription-form .card-body form {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  gap: 20px;
+}
+
+.add-subscription-form .card-body form label {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.add-subscription-form .card-body form input,
+.add-subscription-form .card-body form select {
+  width: 100%;
+  height: 30px;
+}
+
+.add-subscription-form button#add-feature {
+  width: 150px;
+  color: #fff;
+  background: #0073aa;
+  margin: auto;
+}
+
+.add-subscription-form button {
+  padding: 8px 10px;
+  cursor: pointer;
+  border: 1px solid #1666a0;
+  border-radius: 4px;
+  color: #0073aa;
+}

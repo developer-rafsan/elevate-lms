@@ -3,20 +3,19 @@
 // Prevent direct access
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+
 // Add the main "Elevate LMS" menu and sub-menu items
 function elevate_lms_dashboard_menu() {
-    // Main menu
     add_menu_page(
-        'Elevate LMS',                
-        'Elevate LMS',                
-        'manage_options',            
-        'elevate-lms-dashboard',     
+        'Elevate LMS',
+        'Elevate LMS',
+        'manage_options',
+        'elevate-lms-dashboard',
         'elevate_lms_dashboard_page',
-        'dashicons-book',            
-        6                            
+        'dashicons-book',
+        6
     );
 
-    // Sub-menu: Dashboard
     add_submenu_page(
         'elevate-lms-dashboard',
         'Dashboard',
@@ -26,7 +25,6 @@ function elevate_lms_dashboard_menu() {
         'elevate_lms_dashboard_page'
     );
 
-    // Sub-menu: All Classes
     add_submenu_page(
         'elevate-lms-dashboard',
         'All Classes',
@@ -36,7 +34,6 @@ function elevate_lms_dashboard_menu() {
         'elevate_lms_classes_page'
     );
 
-    // Sub-menu: Add New Class
     add_submenu_page(
         'elevate-lms-dashboard',
         'Add New Class',
@@ -46,7 +43,6 @@ function elevate_lms_dashboard_menu() {
         'elevate_lms_add_class_page'
     );
 
-    // Sub-menu: Create Subscription
     add_submenu_page(
         'elevate-lms-dashboard',
         'Create Subscription',
@@ -56,7 +52,6 @@ function elevate_lms_dashboard_menu() {
         'elevate_lms_subscription_page'
     );
 
-    // Sub-menu: Students
     add_submenu_page(
         'elevate-lms-dashboard',
         'Students',
@@ -66,7 +61,6 @@ function elevate_lms_dashboard_menu() {
         'elevate_lms_students_page'
     );
 
-    // Sub-menu: Tutors
     add_submenu_page(
         'elevate-lms-dashboard',
         'Tutors',
@@ -77,6 +71,7 @@ function elevate_lms_dashboard_menu() {
     );
 }
 add_action( 'admin_menu', 'elevate_lms_dashboard_menu' );
+
 
 
 // Template loader function (reusable)
@@ -90,11 +85,6 @@ function elevate_lms_include_template( $template_file, $fallback_title ) {
 
     if ( file_exists( $file ) ) {
         include $file;
-    } else {
-        echo '<div class="wrap">';
-        echo '<h1>' . esc_html__( $fallback_title, 'pixelcode' ) . '</h1>';
-        echo '<p>' . esc_html__( 'Template file not found: ' . esc_html($file), 'pixelcode' ) . '</p>';
-        echo '</div>';
     }
 }
 
@@ -113,7 +103,7 @@ function elevate_lms_add_class_page() {
 }
 
 function elevate_lms_subscription_page() {
-    elevate_lms_include_template( 'subscription.php', 'Create Subscription' );
+    elevate_lms_include_template( 'subscription.php', 'Subscription' );
 }
 
 function elevate_lms_students_page() {
