@@ -1,21 +1,135 @@
 /* Admin CSS */
-.subscription .subscriptionHeader {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    top: 0; 
+.subscription .header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  top: 0;
 }
 
-.subscription .subscriptionHeader h1 {
-    font-size: 1.5rem;
-    line-height: 1;
+.subscription .header h1 {
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
-.subscription .subscriptionHeader button {
+.subscription .header button {
+  padding: 10px;
+  border: 1.8px solid #1666a0;
+  color: #1769a3;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.subscription .filter {
+  margin: 0px;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.subscription .filter button {
+  border: none;
+  padding: 0;
+  font-weight: 500;
+  cursor: pointer;
+  color: #1666a0;
+}
+
+.subscription .filter button.active {
+  color: #000;
+  font-weight: 700;
+}
+
+.subscription .action {
+  margin: 0;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.subscription .action select {
+  padding: 0px 20px;
+}
+
+.subscription .action button {
+  padding: 4px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #1666a0;
+  border-radius: 4px;
+}
+
+.subscription .action button p {
+  margin: 0;
+  color: #1666a0;
+}
+
+.pricing-table {
+  width: 90%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-family: system-ui, Arial, sans-serif;
+}
+.pricing-table th,
+.pricing-table td {
+  padding: 12px 14px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+.pricing-table thead th {
+  background: #fafafa;
+  font-weight: 600;
+}
+.pricing-table tbody tr:nth-child(even) {
+  background: #fff;
+}
+.pricing-table .price {
+  font-weight: 700;
+}
+.pricing-table .offer {
+  color: #d9534f;
+} 
+.pricing-table .regular {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 8px;
+  font-weight: 500;
+}
+.pricing-table .action-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: #0073aa;
+  color: #fff;
+  font-weight: 600;
+  margin-right: 10px;
+}
+@media (max-width: 720px) {
+  .pricing-table thead {
+    display: none;
+  }
+  .pricing-table,
+  .pricing-table tbody,
+  .pricing-table tr,
+  .pricing-table td {
+    display: block;
+    width: 100%;
+  }
+  .pricing-table td {
+    box-sizing: border-box;
     padding: 10px;
-    border: 1.8px solid #1666a0;
-    color: #1769a3;
-    cursor: pointer;
-    font-weight: 600;
-    border-radius: 5px;
+    border-bottom: 1px solid #eee;
+  }
+  .pricing-table td[data-label]:before {
+    content: attr(data-label) ": ";
+    font-weight: 700;
+    display: inline-block;
+    width: 110px;
+  }
 }
