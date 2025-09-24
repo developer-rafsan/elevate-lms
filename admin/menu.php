@@ -53,6 +53,15 @@ function elevate_lms_dashboard_menu() {
     );
 
     add_submenu_page(
+        null,
+        'Add Subscription',
+        'Add Subscription',
+        'manage_options',
+        'elevate-lms-add-subscription',
+        'elevate_lms_add_subscription_page'
+    );
+
+    add_submenu_page(
         'elevate-lms-dashboard',
         'Students',
         'Students',
@@ -100,6 +109,10 @@ function elevate_lms_classes_page() {
 
 function elevate_lms_add_class_page() {
     elevate_lms_include_template( 'add-class.php', 'Add New Class' );
+}
+
+function elevate_lms_add_subscription_page() {
+    elevate_lms_include_template( 'add-subscription.php', 'Add New Subscription' );
 }
 
 function elevate_lms_subscription_page() {

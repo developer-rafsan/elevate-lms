@@ -74,7 +74,6 @@
   width: 90%;
   margin-top: 20px;
   border-collapse: collapse;
-  font-family: system-ui, Arial, sans-serif;
 }
 .pricing-table th,
 .pricing-table td {
@@ -101,13 +100,12 @@
   margin-left: 8px;
   font-weight: 500;
 }
-.pricing-table .action-btn {
+.pricing-table a {
   display: inline-block;
-  padding: 8px 12px;
+  padding: 8px 8px;
   border-radius: 8px;
   text-decoration: none;
-  background: #0073aa;
-  color: #fff;
+  color: #111;
   font-weight: 600;
   margin-right: 10px;
 }
@@ -205,4 +203,17 @@
   border: 1px solid #1666a0;
   border-radius: 4px;
   color: #0073aa;
+}
+
+.pagination a {
+  margin-top: 20px;
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
 }
