@@ -307,3 +307,82 @@
     background-color: #333;
     color: #fff;
 }
+
+
+/* --------------------------------------------------------------------------------- 
+* add-class 
+----------------------------------------------------------------------------- */
+
+.add-class .header {
+  height: 70px;
+  width: 100%;
+  background: #FFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+  box-sizing: border-box;
+}
+
+.add-class .header h3 {
+  font-size: 1.2rem;
+  color: #111111bb;
+  font-weight: 600;
+}
+
+.add-class .header button {
+  background: blue;
+  color: #FFF;
+  font-size: 1rem;
+  padding: 8px 15px;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  letter-spacing: .8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-class .elevate-lms-course-builder {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-top: 20px;
+  gap: 50px;
+}
+
+.add-class .elevate-lms-course-builder .left-site {
+  width: 80%;
+  height: 100%;
+  background: #FFF;
+  box-shadow: 2px 2px 5px #11111113;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.add-class .elevate-lms-course-builder .right-site {
+  width: 20%;
+  height: 100%;
+  background: #FFF;
+  box-shadow: 2px 2px 5px #11111113;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.add-class .elevate-lms-course-builder .form-field {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  flex-direction: column;
+}
+
+.add-class .elevate-lms-course-builder .form-field label {
+  font-size: .9rem;
+  margin-bottom: 10px;
+}
+
+.add-class .elevate-lms-course-builder .form-field input {
+  width: 100%;
+}
