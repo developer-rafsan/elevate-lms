@@ -110,7 +110,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
 <div class="wrap categories">
     <div class="header">
         <h1>Categories</h1>
-        <button class="page-title-action" onclick="document.querySelector('.add-subscription-form').classList.add('active');">
+        <button class="page-title-action" onclick="document.querySelector('.add-category-form').classList.add('active');">
             Add New Category
         </button>
     </div>
@@ -164,7 +164,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
                                     <a href="?page=elevate-lms-categories&action_type=restore&id=<?php echo $cat->id; ?>" class="restore">Restore</a>
                                     <a href="?page=elevate-lms-categories&action_type=permanent_delete&id=<?php echo $cat->id; ?>" class="delete" onclick="return confirm('Are you sure to permanently delete this category?')">Delete Permanently</a>
                                 <?php else: ?>
-                                    <a href="?page=elevate-lms-categories&action=edit&id=<?php echo $cat->id; ?>" class="edit">Edit</a>
                                     <a href="?page=elevate-lms-categories&action_type=delete&id=<?php echo $cat->id; ?>" class="delete" onclick="return confirm('Are you sure to move this category to Trash?')">Delete</a>
                                 <?php endif; ?>
                             </td>
