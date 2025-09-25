@@ -3,7 +3,8 @@
 * subscription 
 ----------------------------------------------------------------------------- */
 .subscription .header,
-.tutors .header {
+.tutors .header,
+.categories .header {
   /* display: flex;
   align-items: center; */
   gap: 20px;
@@ -13,7 +14,8 @@
 }
 
 .subscription .header h1,
-.tutors .header h1 {
+.tutors .header h1,
+.categories .header h1 {
   font-size: 1.5rem;
   line-height: 1;
   margin: 0;
@@ -23,7 +25,8 @@
 }
 
 .subscription .header button,
-.subscription .header button {
+.subscription .header button,
+.categories .header button {
   padding: 6px 10px;
   border: 1.8px solid #1666a0;
   color: #1769a3;
@@ -33,7 +36,8 @@
   display: inline-block;
 }
 
-.subscription .filter {
+.subscription .filter,
+.categories .filter {
   margin: 0px;
   display: flex;
   gap: 15px;
@@ -42,7 +46,8 @@
   margin-bottom: 1rem;
 }
 
-.subscription .filter a {
+.subscription .filter a,
+.categories .filter a {
   border: 1px solid #ccc;
   padding: 5px 10px;
   font-weight: 500;
@@ -52,17 +57,20 @@
   border-radius: 3px;
 }
 
-.subscription .filter a.active {
+.subscription .filter a.active,
+.categories .filter a.active {
   color: #000;
   font-weight: 700;
 }
 
-.subscription .action {
+.subscription .action,
+.categories .action {
   margin: 0;
   gap: 20px;
 }
 
-.subscription .action select {
+.subscription .action select,
+.categories .action select {
   padding: 2px 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -70,7 +78,8 @@
 
 }
 
-.subscription .action button {
+.subscription .action button,
+.categories .action button {
   padding: 5px 10px;
   display: flex;
   justify-content: center;
@@ -85,7 +94,8 @@
 }
 
 .pricing-table,
-.tutors table {
+.tutors table,
+.categories table {
   width: 90%;
   margin-top: 20px;
   border-collapse: collapse;
@@ -93,18 +103,22 @@
 .pricing-table th,
 .pricing-table td,
 .tutors table th,
-.tutors table td {
+.tutors table td,
+.categories table th,
+.categories table td {
   padding: 12px 14px;
   border: 1px solid #e6e6e6;
   text-align: left;
 }
 .pricing-table thead th,
-.tutors table thead th {
+.tutors table thead th,
+.categories table thead th {
   background: #fafafa;
   font-weight: 600;
 }
 .pricing-table tbody tr:nth-child(even),
-.tutors table tbody tr:nth-child(even) {
+.tutors table tbody tr:nth-child(even),
+.categories table tbody tr:nth-child(even) {
   background: #fff;
 }
 .pricing-table .price {
@@ -120,7 +134,8 @@
   margin-left: 8px;
   font-weight: 500;
 }
-.pricing-table a {
+.pricing-table a,
+.categories table a {
   display: inline-block;
   padding: 8px 8px;
   border-radius: 8px;
@@ -130,12 +145,14 @@
   margin-right: 10px;
 }
 
-.pricing-table a.restore {
+.pricing-table a.restore,
+.categories table a.restore {
     background-color: #28a745;
     color: #fff;
 }
 
-.pricing-table a.delete {
+.pricing-table a.delete,
+.categories table a.delete {
     background-color: #dc3545;
     color: #fff;
 }
@@ -170,7 +187,8 @@
 *subscription form 
 ----------------------------------------------------------------------------- */
 .add-subscription-form,
-.add-tutor-form {
+.add-tutor-form,
+.add-category-form {
   position: fixed;
   top: 0;
   right: 0;
@@ -184,26 +202,30 @@
 }
 
 .add-subscription-form.active,
-.add-tutor-form.active {
+.add-tutor-form.active,
+.add-category-form.active {
   transform: translateX(0%);
 }
 
 .add-subscription-form .card,
-.add-tutor-form .card {
+.add-tutor-form .card,
+.add-category-form .card {
   height: 100%;
   position: relative;
   padding: 30px;
 }
 
 .add-subscription-form .card .card-header h5,
-.add-tutor-form .card .card-header h5 { 
+.add-tutor-form .card .card-header h5,
+.add-category-form .card .card-header h5 { 
   font-size: 1.2rem;
   margin: 0;
   font-family: 400;
 }
 
 .add-subscription-form .card .card-header button, .add-subscription-form .card .card-header a,
-.add-tutor-form .card .card-header button, .add-tutor-form .card .card-header a {
+.add-tutor-form .card .card-header button, .add-tutor-form .card .card-header a,
+.add-category-form .card .card-header button, .add-tutor-form .card .card-header a {
   position: absolute;
   right: 30px;
   top: 30px;
@@ -215,7 +237,8 @@
 }
 
 .add-subscription-form .card-body form,
-.add-tutor-form .card-body form {
+.add-tutor-form .card-body form,
+.add-category-form .card-body form {
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -224,7 +247,8 @@
 }
 
 .add-subscription-form .card-body form label,
-.add-tutor-form .card-body form label {
+.add-tutor-form .card-body form label,
+.add-category-form .card-body form label {
   display: block;
   width: 100%;
   margin-bottom: 5px;
@@ -233,13 +257,14 @@
 .add-subscription-form .card-body form input,
 .add-subscription-form .card-body form select,
 .add-tutor-form .card-body form input,
-.add-tutor-form .card-body form select {
+.add-tutor-form .card-body form select,
+.add-category-form .card-body form input,
+.add-category-form .card-body form select {
   width: 100%;
   height: 30px;
 }
 
-.add-subscription-form button#add-feature,
-.add-tutor-form button#add-feature {
+.add-subscription-form button#add-feature {
   width: 150px;
   color: #fff;
   background: #0073aa;
@@ -247,7 +272,8 @@
 }
 
 .add-subscription-form button,
-.add-tutor-form button {
+.add-tutor-form button,
+.add-category-form button {
   padding: 8px 10px;
   cursor: pointer;
   border: 1px solid #1666a0;

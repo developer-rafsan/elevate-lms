@@ -16,6 +16,7 @@ function elevate_lms_admin_assets( $hook ) {
         'elevate-lms_page_elevate-lms-subscription',
         'elevate-lms_page_elevate-lms-students',
         'elevate-lms_page_elevate-lms-tutors',
+        'elevate-lms_page_elevate-lms-categories',
     ];
 
     if ( ! in_array( $hook, $allowed_hooks, true ) ) {
