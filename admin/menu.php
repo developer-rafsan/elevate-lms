@@ -27,15 +27,6 @@ function elevate_lms_dashboard_menu() {
 
     add_submenu_page(
         'elevate-lms-dashboard',
-        'All Classes',
-        'All Classes',
-        'manage_options',
-        'elevate-lms-classes',
-        'elevate_lms_classes_page'
-    );
-
-    add_submenu_page(
-        'elevate-lms-dashboard',
         'Add New Class',
         'Add New Class',
         'manage_options',
@@ -45,11 +36,29 @@ function elevate_lms_dashboard_menu() {
 
     add_submenu_page(
         'elevate-lms-dashboard',
+        'All Classes',
+        'All Classes',
+        'manage_options',
+        'elevate-lms-classes',
+        'elevate_lms_classes_page'
+    );
+
+    add_submenu_page(
+        'elevate-lms-dashboard',
         'Create Subscription',
         'Create Subscription',
         'manage_options',
         'elevate-lms-subscription',
         'elevate_lms_subscription_page'
+    );
+       
+    add_submenu_page(
+        'elevate-lms-dashboard', 
+        'Categories',
+        'Categories',
+        'manage_options',
+        'elevate-lms-categories',
+        'elevate_lms_categories_page'
     );
 
     add_submenu_page(
@@ -94,16 +103,20 @@ function elevate_lms_dashboard_page() {
     elevate_lms_include_template( 'dashboard.php', 'Elevate LMS Dashboard' );
 }
 
-function elevate_lms_classes_page() {
-    elevate_lms_include_template( 'classes.php', 'All Classes' );
-}
-
 function elevate_lms_add_class_page() {
     elevate_lms_include_template( 'add-class.php', 'Add New Class' );
 }
 
+function elevate_lms_classes_page() {
+    elevate_lms_include_template( 'classes.php', 'All Classes' );
+}
+
 function elevate_lms_subscription_page() {
     elevate_lms_include_template( 'subscription.php', 'Subscription' );
+}
+
+function elevate_lms_categories_page() {
+    elevate_lms_include_template( 'categories.php', 'Categories' );
 }
 
 function elevate_lms_students_page() {
