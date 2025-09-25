@@ -71,7 +71,7 @@ include plugin_dir_path( __FILE__ ) . 'action/add-tutor.php';
 <div class="wrap tutors">
     <div class="header">
         <h1>Tutors</h1>
-        <button class="page-title-action" onclick="document.querySelector('.add-subscription-form').classList.add('active');">
+        <button class="page-title-action" onclick="document.querySelector('.add-tutor-form').classList.add('active');">
             Add New Tutor
         </button>
     </div>

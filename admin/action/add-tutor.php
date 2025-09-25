@@ -7,11 +7,11 @@ $subscribers = get_users(array('role' => 'subscriber'));
 
 ?>
 
-<div class="add-subscription-form">
+<div class="add-tutor-form">
     <div class="card">
         <div class="card-header">
             <h5><?php echo esc_html__('Add New Tutor', 'pixelcode'); ?></h5>
-            <button onclick="document.querySelector('.add-subscription-form').classList.remove('active');">
+            <button onclick="document.querySelector('.add-tutor-form').classList.remove('active');">
                 &times;
             </button>
         </div>

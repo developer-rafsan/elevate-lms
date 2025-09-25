@@ -169,7 +169,8 @@
 /* --------------------------------------------------------------------------------- 
 *subscription form 
 ----------------------------------------------------------------------------- */
-.add-subscription-form {
+.add-subscription-form,
+.add-tutor-form {
   position: fixed;
   top: 0;
   right: 0;
@@ -182,23 +183,27 @@
   background: #f0f0f1;
 }
 
-.add-subscription-form.active {
-  transform: translateX(10%);
+.add-subscription-form.active,
+.add-tutor-form.active {
+  transform: translateX(0%);
 }
 
-.add-subscription-form .card {
+.add-subscription-form .card,
+.add-tutor-form .card {
   height: 100%;
   position: relative;
   padding: 30px;
 }
 
-.add-subscription-form .card .card-header h5 { 
+.add-subscription-form .card .card-header h5,
+.add-tutor-form .card .card-header h5 { 
   font-size: 1.2rem;
   margin: 0;
   font-family: 400;
 }
 
-.add-subscription-form .card .card-header button, .add-subscription-form .card .card-header a {
+.add-subscription-form .card .card-header button, .add-subscription-form .card .card-header a,
+.add-tutor-form .card .card-header button, .add-tutor-form .card .card-header a {
   position: absolute;
   right: 30px;
   top: 30px;
@@ -209,7 +214,8 @@
   text-decoration: none;
 }
 
-.add-subscription-form .card-body form {
+.add-subscription-form .card-body form,
+.add-tutor-form .card-body form {
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -217,26 +223,31 @@
   gap: 20px;
 }
 
-.add-subscription-form .card-body form label {
+.add-subscription-form .card-body form label,
+.add-tutor-form .card-body form label {
   display: block;
   width: 100%;
   margin-bottom: 5px;
 }
 
 .add-subscription-form .card-body form input,
-.add-subscription-form .card-body form select {
+.add-subscription-form .card-body form select,
+.add-tutor-form .card-body form input,
+.add-tutor-form .card-body form select {
   width: 100%;
   height: 30px;
 }
 
-.add-subscription-form button#add-feature {
+.add-subscription-form button#add-feature,
+.add-tutor-form button#add-feature {
   width: 150px;
   color: #fff;
   background: #0073aa;
   margin: auto;
 }
 
-.add-subscription-form button {
+.add-subscription-form button,
+.add-tutor-form button {
   padding: 8px 10px;
   cursor: pointer;
   border: 1px solid #1666a0;
