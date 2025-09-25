@@ -1,28 +1,36 @@
 /* Admin CSS */
+/* --------------------------------------------------------------------------------- 
+* subscription 
+----------------------------------------------------------------------------- */
 .subscription .header,
 .tutors .header {
-  display: flex;
-  align-items: center;
-  justify-content: start;
+  /* display: flex;
+  align-items: center; */
   gap: 20px;
   top: 0;
+  margin-top: 20px;
+  margin-bottom: 1rem;
 }
 
 .subscription .header h1,
 .tutors .header h1 {
   font-size: 1.5rem;
   line-height: 1;
-  font-weight: 400;
   margin: 0;
+  color: #333;
+  padding: 0px;
+  display: inline-block;
 }
 
+.subscription .header button,
 .subscription .header button {
-  padding: 10px;
+  padding: 6px 10px;
   border: 1.8px solid #1666a0;
   color: #1769a3;
   cursor: pointer;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: 3px;
+  display: inline-block;
 }
 
 .subscription .filter {
@@ -31,64 +39,72 @@
   gap: 15px;
   margin-top: 10px;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
-.subscription .filter button {
-  border: none;
-  padding: 0;
+.subscription .filter a {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
   font-weight: 500;
   cursor: pointer;
   color: #1666a0;
+  text-decoration: none;
+  border-radius: 3px;
 }
 
-.subscription .filter button.active {
+.subscription .filter a.active {
   color: #000;
   font-weight: 700;
 }
 
 .subscription .action {
   margin: 0;
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
   gap: 20px;
 }
 
 .subscription .action select {
-  padding: 0px 20px;
+  padding: 2px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+
 }
 
 .subscription .action button {
-  padding: 4px 10px;
+  padding: 5px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   border: 1px solid #1666a0;
   border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
 }
 
-.subscription .action button p {
-  margin: 0;
-  color: #1666a0;
-}
-
-.pricing-table {
+.pricing-table,
+.tutors table {
   width: 90%;
   margin-top: 20px;
   border-collapse: collapse;
 }
 .pricing-table th,
-.pricing-table td {
+.pricing-table td,
+.tutors table th,
+.tutors table td {
   padding: 12px 14px;
   border: 1px solid #e6e6e6;
   text-align: left;
 }
-.pricing-table thead th {
+.pricing-table thead th,
+.tutors table thead th {
   background: #fafafa;
   font-weight: 600;
 }
-.pricing-table tbody tr:nth-child(even) {
+.pricing-table tbody tr:nth-child(even),
+.tutors table tbody tr:nth-child(even) {
   background: #fff;
 }
 .pricing-table .price {
@@ -96,7 +112,8 @@
 }
 .pricing-table .offer {
   color: #d9534f;
-} 
+  font-weight: 700;
+}
 .pricing-table .regular {
   text-decoration: line-through;
   color: #888;
@@ -112,6 +129,17 @@
   font-weight: 600;
   margin-right: 10px;
 }
+
+.pricing-table a.restore {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.pricing-table a.delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
 @media (max-width: 720px) {
   .pricing-table thead {
     display: none;
@@ -136,6 +164,11 @@
   }
 }
 
+
+
+/* --------------------------------------------------------------------------------- 
+*subscription form 
+----------------------------------------------------------------------------- */
 .add-subscription-form {
   position: fixed;
   top: 0;
@@ -146,13 +179,14 @@
   transform: translateX(110%);
   transition: .5s;
   z-index: 9999;
+  background: #f0f0f1;
 }
 
 .add-subscription-form.active {
-  transform: translateX(0%);
+  transform: translateX(10%);
 }
 
-.add-subscription-form .card{
+.add-subscription-form .card {
   height: 100%;
   position: relative;
   padding: 30px;
@@ -164,7 +198,7 @@
   font-family: 400;
 }
 
-.add-subscription-form .card .card-header button{
+.add-subscription-form .card .card-header button, .add-subscription-form .card .card-header a {
   position: absolute;
   right: 30px;
   top: 30px;
@@ -172,6 +206,7 @@
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
+  text-decoration: none;
 }
 
 .add-subscription-form .card-body form {
@@ -209,15 +244,29 @@
   color: #0073aa;
 }
 
+/* --------------------------------------------------------------------------------- 
+* pagination 
+----------------------------------------------------------------------------- */
+.pagination {
+    margin-top: 1rem;
+    display: flex;
+    gap: 5px;
+}
+
 .pagination a {
   margin-top: 20px;
   height: 15px;
   width: 15px;
   border: 1px solid black;
-  border-radius: 50%;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  padding: 5px;
+}
 
+.pagination a.active {
+    background-color: #333;
+    color: #fff;
 }

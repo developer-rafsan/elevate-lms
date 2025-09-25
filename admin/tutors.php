@@ -1,84 +1,113 @@
 <?php
-defined('ABSPATH') or die('No script kiddies please!');
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 global $wpdb;
+$table_name = $wpdb->prefix . 'elevate_lms_tutors';
 
-// Handle form submission
-if (isset($_POST['assign_tutor'])) {
-    $user_id = intval($_POST['user_id']);
-    if ($user_id) {
-        $user = new WP_User($user_id);
-        $user->set_role('author'); 
-        echo '<div class="notice notice-success is-dismissible"><p>Tutor assigned successfully.</p></div>';
+// Handle single delete
+if( isset($_GET['action_type']) && isset($_GET['id']) ) {
+    $user_id = intval($_GET['id']);
+    $action_type = sanitize_text_field($_GET['action_type']);
+
+    if ($action_type === 'delete' && $user_id > 0) {
+        // Change user role back to 'subscriber'
+        wp_update_user(array('ID' => $user_id, 'role' => 'subscriber'));
+        
+        // Also remove from the custom table if exists
+        $wpdb->delete($table_name, ['email' => get_userdata($user_id)->user_email], ['%s']);
     }
+    wp_redirect(admin_url('admin.php?page=elevate-lms-tutors'));
+    exit;
 }
 
-// ✅ Only get users with role subscriber
-$all_users = get_users([
-    'role'    => 'subscriber',
-    'orderby' => 'display_name',
-    'order'   => 'ASC'
-]);
+// Handle add form submission
+if ( isset( $_POST['add_tutor'] ) && isset( $_POST['add_tutor_nonce'] ) && wp_verify_nonce( $_POST['add_tutor_nonce'], 'add_tutor_nonce' ) ) {
+    $user_id = intval( $_POST['tutor_id'] );
+    if ( $user_id > 0 ) {
+        // Change user role to 'author'
+        wp_update_user( array( 'ID' => $user_id, 'role' => 'author' ) );
 
-// Get all current tutors (authors)
-$tutors = get_users([
-    'role'    => 'author',
-    'orderby' => 'display_name',
-    'order'   => 'ASC',
-]);
+        // Get user data
+        $user_data = get_userdata( $user_id );
+
+        // Check if tutor already exists in the custom table
+        $existing_tutor = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE email = %s", $user_data->user_email ) );
+
+        if ( ! $existing_tutor ) {
+            // Insert tutor into custom table
+            $wpdb->insert(
+                $table_name,
+                array(
+                    'name' => $user_data->display_name,
+                    'email' => $user_data->user_email,
+                )
+            );
+        }
+    }
+    wp_redirect(admin_url('admin.php?page=elevate-lms-tutors'));
+    exit;
+}
+
+// Pagination
+$per_page = 10;
+$paged = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1;
+$offset = ($paged - 1) * $per_page;
+
+// Counts
+$user_counts = count_users();
+$total_count = isset($user_counts['avail_roles']['author']) ? $user_counts['avail_roles']['author'] : 0;
+
+// Fetch author users
+$tutors = get_users(array('role' => 'author', 'offset' => $offset, 'number' => $per_page));
+
+// Total pages
+$total_pages = ceil($total_count / $per_page);
+
+// Include Add Tutor form
+include plugin_dir_path( __FILE__ ) . 'action/add-tutor.php';
+
 ?>
 
 <div class="wrap tutors">
-    <div class="header mb-4">
-        <h1 class="text-2xl font-bold">Manage Tutors</h1>
+    <div class="header">
+        <h1>Tutors</h1>
+        <button class="page-title-action" onclick="document.querySelector('.add-subscription-form').classList.add('active');">
+            Add New Tutor
+        </button>
     </div>
 
-    <div style="display: flex; gap:20px; margin-top: 20px;">
-        <!-- Tutors Table -->
-        <table style="width: 70%;" class="widefat fixed striped">
-            <thead>
-                <tr>
-                    <th><?php esc_html_e('ID', 'pixelcode'); ?></th>
-                    <th><?php esc_html_e('Name', 'pixelcode'); ?></th>
-                    <th><?php esc_html_e('Username', 'pixelcode'); ?></th>
-                    <th><?php esc_html_e('Email', 'pixelcode'); ?></th>
-                    <th><?php esc_html_e('Registered Date', 'pixelcode'); ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($tutors): ?>
-                    <?php foreach($tutors as $tutor): ?>
-                    <tr>
-                        <td><?php echo esc_html($tutor->ID); ?></td>
+    <!-- Tutors Table -->
+    <table class="wp-list-table widefat fixed striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($tutors)) : ?>
+                <?php foreach ($tutors as $tutor) : ?>
+                    <tr id="user-<?php echo $tutor->ID; ?>">
                         <td><?php echo esc_html($tutor->display_name); ?></td>
-                        <td><?php echo esc_html($tutor->user_login); ?></td>
                         <td><?php echo esc_html($tutor->user_email); ?></td>
-                        <td><?php echo esc_html(date('Y-m-d', strtotime($tutor->user_registered))); ?></td>
+                        <td>
+                            <a href="?page=elevate-lms-tutors&action_type=delete&id=<?php echo $tutor->ID; ?>" class="delete" onclick="return confirm('This action will remove the author role from this user and revert them to a subscriber. Are you sure?')">Delete</a>
+                        </td>
                     </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="5" class="text-center"><?php esc_html_e('No tutors found.', 'pixelcode'); ?></td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td colspan="3">No tutors found.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
 
-        <!-- Assign Tutor Form -->
-        <div style="width: 20%; padding:20px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);" class="add-tutors-form mb-6">
-            <form method="post">
-                <label style="font-size: 1.2rem; font-weight: 600" for="user_id" class="block mb-2 font-bold">Select Subscriber to Assign as Tutor:</label>
-                <select style="margin: 20px 0px" name="user_id" id="user_id" class="regular-text mb-2">
-                    <option value="">-- Select Subscriber --</option>
-                    <?php foreach ($all_users as $user): ?>
-                        <option value="<?php echo esc_attr($user->ID); ?>">
-                            <?php echo esc_html($user->display_name . ' (' . $user->user_email . ')'); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-                <br>
-                <input type="submit" name="assign_tutor" class="button button-primary mt-2" value="Save Now">
-            </form>
-        </div>
+    <!-- Pagination -->
+    <div class="pagination">
+        <?php for($i=1; $i<=$total_pages; $i++): ?>
+            <a href="?page=elevate-lms-tutors&paged=<?php echo $i; ?>" class="<?php echo ($paged==$i)?'active':''; ?>"><?php echo $i; ?></a>
+        <?php endfor; ?>
     </div>
 </div>

@@ -31,14 +31,6 @@ function elevate_lms_admin_assets( $hook ) {
         'all'
     );
 
-    // TailwindCSS CDN
-    wp_enqueue_style(
-        'tailwind-admin-cdn',
-        'https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css',
-        [],
-        null
-    );
-
     // Font Awesome CDN
     wp_enqueue_style(
         'font-awesome-cdn',
