@@ -39,3 +39,17 @@ function elevate_lms_activate() {
         wp_die( esc_html__( 'Database setup file not found.', 'pixelcode' ) );
     }
 }
+
+// Hook to handle form submission
+add_action('admin_post_add_class_action', 'elevate_lms_handle_add_class');
+
+function elevate_lms_handle_add_class() {
+    // Include the form handling file
+    $action_file = plugin_dir_path( __FILE__ ) . 'admin/action/add-class.php';
+
+    if ( file_exists( $action_file ) ) {
+        require_once $action_file;
+    } else {
+        wp_die( esc_html__( 'Action file not found.', 'pixelcode' ) );
+    }
+}
