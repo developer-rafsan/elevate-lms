@@ -97,17 +97,29 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
                             </div>
                         </div>
 
-                        <!-- Pricing Model -->
+
+                        <!-- Duration Tab -->
                         <div class="tab-item" data-tab="duration">
-                            <div>
-                                <label>Start Time</label>
-                                <input type="date" name="start_date">
-                                <input type="time" name="start_time">
-                            </div>
-                            <div>
-                                <label>End Time</label>
-                                <input type="date" name="end_date">
-                                <input type="time" name="end_time">
+                            <div class="duration-box">
+                                <!-- Start Time -->
+                                <div class="time-group">
+                                    <label for="start_date">Start Time</label>
+                                    <div class="time-inputs">
+                                        <input type="date" id="start_date" name="start_date">
+                                        <input type="time" id="start_time" name="start_time">
+                                    </div>
+                                    <small class="hint">Select when your course starts</small>
+                                </div>
+
+                                <!-- End Time -->
+                                <div class="time-group">
+                                    <label for="end_date">End Time</label>
+                                    <div class="time-inputs">
+                                        <input type="date" id="end_date" name="end_date">
+                                        <input type="time" id="end_time" name="end_time">
+                                    </div>
+                                    <small class="hint">Select when your course ends</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -163,6 +175,35 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
                         else :
                         ?>
                         <option disabled>No categories found</option>
+                        <?php endif; ?>
+                    </select>
+                </div>
+                
+                <!-- Tutor -->
+                <div class="form-field">
+                    <label for="tutor_id">Tutor</label>
+                    <select name="tutor_id" id="tutor_id">
+                        <option value="">-- Select Tutor --</option>
+                        <?php
+                        // Get all authors
+                        $args = array(
+                            'role__in' => array( 'author' ), 
+                            'orderby'  => 'display_name',
+                            'order'    => 'ASC'
+                        );
+                        $authors = get_users( $args );
+
+                        if ( $authors ) :
+                            foreach ( $authors as $author ) :
+                        ?>
+                            <option value="<?php echo esc_attr( $author->ID ); ?>">
+                                <?php echo esc_html( $author->display_name ); ?>
+                            </option>
+                        <?php
+                            endforeach;
+                        else :
+                        ?>
+                            <option disabled>No tutors (authors) found</option>
                         <?php endif; ?>
                     </select>
                 </div>
