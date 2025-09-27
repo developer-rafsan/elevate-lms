@@ -2,6 +2,14 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+global $wpdb;
+
+// Subscriptions table name
+$subscriptions_table = $wpdb->prefix . 'elevate_lms_subscriptions';
+
+// Get all subscriptions
+$subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, regular_price FROM $subscriptions_table ORDER BY id ASC", ARRAY_A );
+
 ?>
 <div class="wrap add-class">
     <div class="header">
@@ -37,22 +45,79 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
                     ?>
                 </div>
 
-                <!-- Difficulty Level -->
-                <div class="form-field">
-                    <label for="difficulty">Difficulty Level</label>
-                    <select name="difficulty" id="difficulty">
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                    </select>
+                <div class="option-box">
+                    <div class="tab-buttons">
+                        <button type="button" class="active" data-tab="difficulty">Difficulty</button>
+                        <button type="button" data-tab="pricing">Pricing</button>
+                        <button type="button" data-tab="duration">Duration</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <!-- Difficulty Level -->
+                        <div class="tab-item active" data-tab="difficulty">
+                            <label for="difficulty">Difficulty Level</label>
+                            <select name="difficulty" id="difficulty">
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                                <option value="custom">Custom</option>
+                            </select>
+
+                            <!-- hidden custom input -->
+                            <div id="custom-difficulty-box" style="display:none; margin-top:10px;">
+                                <label for="custom_difficulty">Enter Custom Difficulty:</label>
+                                <input type="text" id="custom_difficulty" name="custom_difficulty"
+                                    placeholder="Your custom level">
+                            </div>
+                        </div>
+
+
+                        <!-- Pricing Model -->
+                        <div class="tab-item" data-tab="pricing">
+                            <label>Pricing Model</label>
+                            <label><input type="radio" name="pricing" value="free" checked> Free</label>
+                            <label><input type="radio" name="pricing" value="paid"> Paid</label>
+
+                            <!-- hidden subscription select box -->
+                            <div id="subscription-box" style="display:none; margin-top:10px;">
+                                <label for="subscription_id">Choose Subscription:</label>
+                                <select name="subscription_id" id="subscription_id">
+                                    <option value="">-- Select Subscription --</option>
+                                    <?php if ( $subscriptions ) : ?>
+                                    <?php foreach ( $subscriptions as $sub ) : ?>
+                                    <option value="<?php echo esc_attr($sub['id']); ?>">
+                                        <?php echo esc_html($sub['title']); ?> -
+                                        <?php echo esc_html($sub['duration']); ?> (Offer:
+                                        $<?php echo esc_html($sub['offer_price']); ?>, Regular:
+                                        $<?php echo esc_html($sub['regular_price']); ?>)
+                                    </option>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Model -->
+                        <div class="tab-item" data-tab="duration">
+                            <div>
+                                <label>Start Time</label>
+                                <input type="date" name="start_date">
+                                <input type="time" name="start_time">
+                            </div>
+                            <div>
+                                <label>End Time</label>
+                                <input type="date" name="end_date">
+                                <input type="time" name="end_time">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- class pre requrment -->
+                <div class="form-field requrment-field">
+                    <label for="requrment">Pre Requrment</label>
+                    <input type="text" id="requrment" name="requrment" required>
                 </div>
 
-                <!-- Pricing Model -->
-                <div class="form-field">
-                    <label>Pricing Model</label><br>
-                    <label><input type="radio" name="pricing" value="free" checked> Free</label>
-                    <label><input type="radio" name="pricing" value="paid"> Paid</label>
-                </div>
             </div>
 
             <!-- right site -->
@@ -76,21 +141,33 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
                 <!-- Categories -->
                 <div class="form-field">
                     <label>Categories</label>
-                    <select name="categories[]" multiple>
+                    <select name="categories">
+                        <option value="">-- Select Categories --</option>
                         <?php
-                global $wpdb;
-                $categories = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}elevate_lms_categories WHERE deleted=0");
-                if ( $categories ) {
-                    foreach ( $categories as $cat ) {
-                        echo '<option value="' . esc_attr($cat->id) . '">' . esc_html($cat->category_name) . '</option>';
-                    }
-                } else {
-                    echo '<option disabled>No categories found</option>';
-                }
-                ?>
+                        global $wpdb;
+
+                        // Categories table name
+                        $categories_table = $wpdb->prefix . 'elevate_lms_categories';
+
+                        // Fetch all categories where deleted = 0
+                        $categories = $wpdb->get_results( "SELECT id, category_name FROM $categories_table WHERE deleted = 0 ORDER BY category_name ASC", ARRAY_A );
+
+                        if ( $categories ) :
+                            foreach ( $categories as $cat ) :
+                        ?>
+                        <option value="<?php echo esc_attr( $cat['id'] ); ?>">
+                            <?php echo esc_html( $cat['category_name'] ); ?>
+                        </option>
+                        <?php
+                            endforeach;
+                        else :
+                        ?>
+                        <option disabled>No categories found</option>
+                        <?php endif; ?>
                     </select>
                 </div>
             </div>
         </div>
     </form>
-    <?php
+</div>
+<?php

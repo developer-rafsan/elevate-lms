@@ -75,7 +75,6 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   display: inline-block;
-
 }
 
 .subscription .action button,
@@ -147,14 +146,14 @@
 
 .pricing-table a.restore,
 .categories table a.restore {
-    background-color: #28a745;
-    color: #fff;
+  background-color: #28a745;
+  color: #fff;
 }
 
 .pricing-table a.delete,
 .categories table a.delete {
-    background-color: #dc3545;
-    color: #fff;
+  background-color: #dc3545;
+  color: #fff;
 }
 
 @media (max-width: 720px) {
@@ -181,8 +180,6 @@
   }
 }
 
-
-
 /* --------------------------------------------------------------------------------- 
 *subscription form 
 ----------------------------------------------------------------------------- */
@@ -196,7 +193,7 @@
   height: 100vh;
   box-shadow: 1px 1px 5px #11111123;
   transform: translateX(110%);
-  transition: .5s;
+  transition: 0.5s;
   z-index: 9999;
   background: #f0f0f1;
 }
@@ -217,15 +214,18 @@
 
 .add-subscription-form .card .card-header h5,
 .add-tutor-form .card .card-header h5,
-.add-category-form .card .card-header h5 { 
+.add-category-form .card .card-header h5 {
   font-size: 1.2rem;
   margin: 0;
   font-family: 400;
 }
 
-.add-subscription-form .card .card-header button, .add-subscription-form .card .card-header a,
-.add-tutor-form .card .card-header button, .add-tutor-form .card .card-header a,
-.add-category-form .card .card-header button, .add-tutor-form .card .card-header a {
+.add-subscription-form .card .card-header button,
+.add-subscription-form .card .card-header a,
+.add-tutor-form .card .card-header button,
+.add-tutor-form .card .card-header a,
+.add-category-form .card .card-header button,
+.add-tutor-form .card .card-header a {
   position: absolute;
   right: 30px;
   top: 30px;
@@ -285,9 +285,9 @@
 * pagination 
 ----------------------------------------------------------------------------- */
 .pagination {
-    margin-top: 1rem;
-    display: flex;
-    gap: 5px;
+  margin-top: 1rem;
+  display: flex;
+  gap: 5px;
 }
 
 .pagination a {
@@ -304,10 +304,9 @@
 }
 
 .pagination a.active {
-    background-color: #333;
-    color: #fff;
+  background-color: #333;
+  color: #fff;
 }
-
 
 /* --------------------------------------------------------------------------------- 
 * add-class 
@@ -316,7 +315,7 @@
 .add-class .header {
   height: 70px;
   width: 100%;
-  background: #FFF;
+  background: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -331,14 +330,14 @@
 }
 
 .add-class .header button {
-  background: blue;
-  color: #FFF;
+  background: #006ba1;
+  color: #fff;
   font-size: 1rem;
   padding: 8px 15px;
   border: none;
   outline: none;
   text-transform: capitalize;
-  letter-spacing: .8px;
+  letter-spacing: 0.8px;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
@@ -355,7 +354,7 @@
 .add-class .elevate-lms-course-builder .left-site {
   width: 80%;
   height: 100%;
-  background: #FFF;
+  background: #fff;
   box-shadow: 2px 2px 5px #11111113;
   padding: 20px;
   border-radius: 5px;
@@ -364,7 +363,7 @@
 .add-class .elevate-lms-course-builder .right-site {
   width: 20%;
   height: 100%;
-  background: #FFF;
+  background: #fff;
   box-shadow: 2px 2px 5px #11111113;
   padding: 20px;
   border-radius: 5px;
@@ -379,10 +378,172 @@
 }
 
 .add-class .elevate-lms-course-builder .form-field label {
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin-bottom: 10px;
 }
 
-.add-class .elevate-lms-course-builder .form-field input {
+.add-class .elevate-lms-course-builder .form-field input:not([type="radio"]) {
   width: 100%;
+}
+
+.add-class .elevate-lms-course-builder div#wp-course_description-wrap {
+  width: 100%;
+}
+
+.add-class .elevate-lms-course-builder .form-field.requrment-field {
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-class .elevate-lms-course-builder .form-field.requrment-field label {
+  font-weight: 600;
+}
+
+.add-class .elevate-lms-course-builder .form-field.requrment-field input {
+  width: 100%;
+  height: 100px;
+}
+
+.add-class .elevate-lms-course-builder .option-box {
+  width: 100%;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-buttons {
+  width: 15%;
+  box-sizing: border-box;
+  height: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background: #f3f2f2;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-buttons button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: left;
+  box-sizing: border-box;
+  background: #f3f2f2;
+  border-bottom: 1px solid #ccc;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-buttons button.active {
+  background: #fff;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-content {
+  width: 85%;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-content .tab-item {
+  display: none;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+  gap: 15px;
+}
+
+.add-class
+  .elevate-lms-course-builder
+  .option-box
+  .tab-content
+  .tab-item
+  label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.add-class
+  .elevate-lms-course-builder
+  .option-box
+  .tab-content
+  .tab-item.active {
+  display: flex;
+}
+
+#custom-difficulty-box {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.right-site .form-field {
+  margin-bottom: 20px;
+}
+
+.right-site .form-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.right-site .form-field .button {
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid #012c4146;
+  border-style: dashed;
+  width: 100%;
+  height: 150px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.right-site .form-field input[type="hidden"] {
+  display: none;
+}
+
+/* Preview box */
+#featured_image_preview,
+#intro_video_preview {
+  margin-top: 10px;
+}
+
+#featured_image_preview img,
+#intro_video_preview video {
+  max-width: 80px;
+  height: 80px;
+  width: 100%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  display: block;
+}
+
+/* For video */
+#intro_video_preview video {
+  max-height: 200px;
+}
+
+.right-site .form-field select {
+  width: 100%;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
 }
