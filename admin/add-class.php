@@ -17,7 +17,10 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
         <button>public</button>
     </div>
 
-    <form action="">
+    <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+        <input type="hidden" name="action" value="add_class_action">
+        <?php wp_nonce_field('add_class_action', 'add_class_nonce'); ?>
+
         <div class="elevate-lms-course-builder">
             <!-- left site -->
             <div class="left-site">
@@ -86,7 +89,7 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
                                     <?php if ( $subscriptions ) : ?>
                                     <?php foreach ( $subscriptions as $sub ) : ?>
                                     <option value="<?php echo esc_attr($sub['id']); ?>">
-                                        <?php echo esc_html($sub['title']); ?> -
+                                        <?php echo esc_html($sub['title']); ?> - 
                                         <?php echo esc_html($sub['duration']); ?> (Offer:
                                         $<?php echo esc_html($sub['offer_price']); ?>, Regular:
                                         $<?php echo esc_html($sub['regular_price']); ?>)
@@ -207,6 +210,9 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
                         <?php endif; ?>
                     </select>
                 </div>
+                 <p class="submit">
+                    <input type="submit" name="add_class" class="button button-primary" value="<?php echo esc_attr__('Add Class', 'pixelcode'); ?>">
+                </p>
             </div>
         </div>
     </form>
