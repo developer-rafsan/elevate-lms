@@ -53,6 +53,7 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
                         <button type="button" class="active" data-tab="difficulty">Difficulty</button>
                         <button type="button" data-tab="pricing">Pricing</button>
                         <button type="button" data-tab="duration">Duration</button>
+                        <button type="button" data-tab="classes">Classes Type</button>
                     </div>
 
                     <div class="tab-content">
@@ -104,6 +105,11 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
                         <!-- Duration Tab -->
                         <div class="tab-item" data-tab="duration">
                             <div class="duration-box">
+                                <!-- Duration -->
+                                <div class="form-field">
+                                    <label for="duration">Duration</label>
+                                    <input type="text" id="duration" name="duration" placeholder="e.g., 3 hours, 4 weeks">
+                                </div>
                                 <!-- Start Time -->
                                 <div class="time-group">
                                     <label for="start_date">Start Time</label>
@@ -125,6 +131,27 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Classes Tab -->
+                        <div class="tab-item" data-tab="classes">
+                            <div class="form-field">
+                                <label><input type="radio" name="class_type" value="pre-recorded" checked> Pre-recorded</label>
+                                <label><input type="radio" name="class_type" value="live"> Live Class</label>
+                            </div>
+
+                            <div class="form-field" id="pre-recorded-video-box">
+                                <label>Pre-recorded Video</label>
+                                <button type="button" class="button upload-pre-recorded-video">Upload Video</button>
+                                <input type="hidden" name="pre_recorded_video" id="pre_recorded_video">
+                                <div id="pre_recorded_video_preview"></div>
+                            </div>
+
+                            <div class="form-field" id="zoom-link-box" style="display:none;">
+                                <p>The Zoom meeting link will be automatically generated upon class creation.</p>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
                 <!-- class pre requrment -->
@@ -210,7 +237,7 @@ $subscriptions = $wpdb->get_results( "SELECT id, title, duration, offer_price, r
                         <?php endif; ?>
                     </select>
                 </div>
-                 <p class="submit">
+                <p class="submit">
                     <input type="submit" name="add_class" class="button button-primary" value="<?php echo esc_attr__('Add Class', 'pixelcode'); ?>">
                 </p>
             </div>

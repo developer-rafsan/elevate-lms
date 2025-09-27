@@ -53,3 +53,45 @@ function elevate_lms_handle_add_class() {
         wp_die( esc_html__( 'Action file not found.', 'pixelcode' ) );
     }
 }
+
+// Register settings
+add_action('admin_init', 'elevate_lms_register_settings');
+function elevate_lms_register_settings() {
+    register_setting('elevate_lms_settings_group', 'elevate_lms_zoom_account_id');
+    register_setting('elevate_lms_settings_group', 'elevate_lms_zoom_client_id');
+    register_setting('elevate_lms_settings_group', 'elevate_lms_zoom_client_secret');
+
+    add_settings_section('elevate_lms_zoom_settings_section', 'Zoom API Settings', null, 'elevate-lms-settings');
+
+    add_settings_field('elevate_lms_zoom_account_id', 'Zoom Account ID', 'elevate_lms_zoom_account_id_callback', 'elevate-lms-settings', 'elevate_lms_zoom_settings_section');
+    add_settings_field('elevate_lms_zoom_client_id', 'Zoom Client ID', 'elevate_lms_zoom_client_id_callback', 'elevate-lms-settings', 'elevate_lms_zoom_settings_section');
+    add_settings_field('elevate_lms_zoom_client_secret', 'Zoom Client Secret', 'elevate_lms_zoom_client_secret_callback', 'elevate-lms-settings', 'elevate_lms_zoom_settings_section');
+}
+
+function elevate_lms_zoom_account_id_callback() {
+    $option = get_option('elevate_lms_zoom_account_id');
+    echo '<input type="text" id="elevate_lms_zoom_account_id" name="elevate_lms_zoom_account_id" value="' . esc_attr($option) . '" />';
+}
+
+function elevate_lms_zoom_client_id_callback() {
+    $option = get_option('elevate_lms_zoom_client_id');
+    echo '<input type="text" id="elevate_lms_zoom_client_id" name="elevate_lms_zoom_client_id" value="' . esc_attr($option) . '" />';
+}
+
+function elevate_lms_zoom_client_secret_callback() {
+    $option = get_option('elevate_lms_zoom_client_secret');
+    echo '<input type="password" id="elevate_lms_zoom_client_secret" name="elevate_lms_zoom_client_secret" value="' . esc_attr($option) . '" />';
+}
+
+add_action('admin_init', 'elevate_lms_prefill_zoom_credentials');
+function elevate_lms_prefill_zoom_credentials() {
+    if (get_option('elevate_lms_zoom_account_id') === false) {
+        update_option('elevate_lms_zoom_account_id', 's2Wt4KvJRNCDrYNlM5KKXg');
+    }
+    if (get_option('elevate_lms_zoom_client_id') === false) {
+        update_option('elevate_lms_zoom_client_id', 'p6jpldfR92Nut7R3Hejg');
+    }
+    if (get_option('elevate_lms_zoom_client_secret') === false) {
+        update_option('elevate_lms_zoom_client_secret', 'mnf3dBh1PmE1bTeCvDuBeTF4bnEGV7Qg');
+    }
+}

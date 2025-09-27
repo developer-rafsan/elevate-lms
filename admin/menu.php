@@ -78,6 +78,15 @@ function elevate_lms_dashboard_menu() {
         'elevate-lms-tutors',
         'elevate_lms_tutors_page'
     );
+
+    add_submenu_page(
+        'elevate-lms-dashboard',
+        'Settings',
+        'Settings',
+        'manage_options',
+        'elevate-lms-settings',
+        'elevate_lms_settings_page'
+    );
 }
 add_action( 'admin_menu', 'elevate_lms_dashboard_menu' );
 
@@ -125,4 +134,8 @@ function elevate_lms_students_page() {
 
 function elevate_lms_tutors_page() {
     elevate_lms_include_template( 'tutors.php', 'Tutors' );
+}
+
+function elevate_lms_settings_page() {
+    elevate_lms_include_template( 'settings.php', 'Settings' );
 }

@@ -109,6 +109,25 @@ jQuery(document).ready(function ($) {
 
         video_frame.open();
     });
-
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const classTypeRadios = document.querySelectorAll('input[name="class_type"]');
+    const preRecordedBox = document.getElementById('pre-recorded-video-box');
+    const zoomLinkBox = document.getElementById('zoom-link-box');
+
+    classTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function () {
+            if (this.value === 'live') {
+                preRecordedBox.style.display = 'none';
+                zoomLinkBox.style.display = 'block';
+            } else {
+                preRecordedBox.style.display = 'block';
+                zoomLinkBox.style.display = 'none';
+            }
+        });
+    });
+});
+
+
 
