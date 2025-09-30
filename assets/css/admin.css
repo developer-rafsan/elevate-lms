@@ -1,0 +1,605 @@
+/* Admin CSS */
+/* --------------------------------------------------------------------------------- 
+* subscription 
+----------------------------------------------------------------------------- */
+.subscription .header,
+.tutors .header,
+.categories .header {
+  /* display: flex;
+  align-items: center; */
+  gap: 20px;
+  top: 0;
+  margin-top: 20px;
+  margin-bottom: 1rem;
+}
+
+.subscription .header h1,
+.tutors .header h1,
+.categories .header h1 {
+  font-size: 1.5rem;
+  line-height: 1;
+  margin: 0;
+  color: #333;
+  padding: 0px;
+  display: inline-block;
+}
+
+.subscription .header button,
+.subscription .header button,
+.categories .header button {
+  padding: 6px 10px;
+  border: 1.8px solid #1666a0;
+  color: #1769a3;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.subscription .filter,
+.categories .filter {
+  margin: 0px;
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.subscription .filter a,
+.categories .filter a {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #1666a0;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.subscription .filter a.active,
+.categories .filter a.active {
+  color: #000;
+  font-weight: 700;
+}
+
+.subscription .action,
+.categories .action {
+  margin: 0;
+  gap: 20px;
+}
+
+.subscription .action select,
+.categories .action select {
+  padding: 2px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.subscription .action button,
+.categories .action button {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #1666a0;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.pricing-table,
+.tutors table,
+.categories table {
+  width: 90%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+.pricing-table th,
+.pricing-table td,
+.tutors table th,
+.tutors table td,
+.categories table th,
+.categories table td {
+  padding: 12px 14px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+.pricing-table thead th,
+.tutors table thead th,
+.categories table thead th {
+  background: #fafafa;
+  font-weight: 600;
+}
+.pricing-table tbody tr:nth-child(even),
+.tutors table tbody tr:nth-child(even),
+.categories table tbody tr:nth-child(even) {
+  background: #fff;
+}
+.pricing-table .price {
+  font-weight: 700;
+}
+.pricing-table .offer {
+  color: #d9534f;
+  font-weight: 700;
+}
+.pricing-table .regular {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 8px;
+  font-weight: 500;
+}
+.pricing-table a,
+.categories table a {
+  display: inline-block;
+  padding: 8px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.pricing-table a.restore,
+.categories table a.restore {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.pricing-table a.delete,
+.categories table a.delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .pricing-table thead {
+    display: none;
+  }
+  .pricing-table,
+  .pricing-table tbody,
+  .pricing-table tr,
+  .pricing-table td {
+    display: block;
+    width: 100%;
+  }
+  .pricing-table td {
+    box-sizing: border-box;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .pricing-table td[data-label]:before {
+    content: attr(data-label) ": ";
+    font-weight: 700;
+    display: inline-block;
+    width: 110px;
+  }
+}
+
+/* --------------------------------------------------------------------------------- 
+*subscription form 
+----------------------------------------------------------------------------- */
+.add-subscription-form,
+.add-tutor-form,
+.add-category-form {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  box-shadow: 1px 1px 5px #11111123;
+  transform: translateX(110%);
+  transition: 0.5s;
+  z-index: 9999;
+  background: #f0f0f1;
+}
+
+.add-subscription-form.active,
+.add-tutor-form.active,
+.add-category-form.active {
+  transform: translateX(0%);
+}
+
+.add-subscription-form .card,
+.add-tutor-form .card,
+.add-category-form .card {
+  height: 100%;
+  position: relative;
+  padding: 30px;
+}
+
+.add-subscription-form .card .card-header h5,
+.add-tutor-form .card .card-header h5,
+.add-category-form .card .card-header h5 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-family: 400;
+}
+
+.add-subscription-form .card .card-header button,
+.add-subscription-form .card .card-header a,
+.add-tutor-form .card .card-header button,
+.add-tutor-form .card .card-header a,
+.add-category-form .card .card-header button,
+.add-tutor-form .card .card-header a {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.add-subscription-form .card-body form,
+.add-tutor-form .card-body form,
+.add-category-form .card-body form {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  gap: 20px;
+}
+
+.add-subscription-form .card-body form label,
+.add-tutor-form .card-body form label,
+.add-category-form .card-body form label {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.add-subscription-form .card-body form input,
+.add-subscription-form .card-body form select,
+.add-tutor-form .card-body form input,
+.add-tutor-form .card-body form select,
+.add-category-form .card-body form input,
+.add-category-form .card-body form select {
+  width: 100%;
+  height: 30px;
+}
+
+.add-subscription-form button#add-feature {
+  width: 150px;
+  color: #fff;
+  background: #0073aa;
+  margin: auto;
+}
+
+.add-subscription-form button,
+.add-tutor-form button,
+.add-category-form button {
+  padding: 8px 10px;
+  cursor: pointer;
+  border: 1px solid #1666a0;
+  border-radius: 4px;
+  color: #0073aa;
+}
+
+/* --------------------------------------------------------------------------------- 
+* pagination 
+----------------------------------------------------------------------------- */
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  gap: 5px;
+}
+
+.pagination a {
+  margin-top: 20px;
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.pagination a.active {
+  background-color: #333;
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------------- 
+* add-class 
+----------------------------------------------------------------------------- */
+
+.add-class .header {
+  height: 70px;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+  box-sizing: border-box;
+}
+
+.add-class .header h3 {
+  font-size: 1.2rem;
+  color: #111111bb;
+  font-weight: 600;
+}
+
+.add-class .header button {
+  background: #006ba1;
+  color: #fff;
+  font-size: 1rem;
+  padding: 8px 15px;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  letter-spacing: 0.8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-class .elevate-lms-course-builder {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-top: 20px;
+  gap: 50px;
+}
+
+.add-class .elevate-lms-course-builder .left-site {
+  width: 80%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 2px 5px #11111113;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.add-class .elevate-lms-course-builder .right-site {
+  width: 20%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 2px 5px #11111113;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.add-class .elevate-lms-course-builder .form-field {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  flex-direction: column;
+}
+
+.add-class .elevate-lms-course-builder .form-field label {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.add-class .elevate-lms-course-builder .form-field input:not([type="radio"]) {
+  width: 100%;
+}
+
+.add-class .elevate-lms-course-builder div#wp-course_description-wrap {
+  width: 100%;
+}
+
+.add-class .elevate-lms-course-builder .form-field.requrment-field {
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-class .elevate-lms-course-builder .form-field.requrment-field label {
+  font-weight: 600;
+}
+
+.add-class .elevate-lms-course-builder .form-field.requrment-field input {
+  width: 100%;
+  height: 100px;
+}
+
+.add-class .elevate-lms-course-builder .option-box {
+  width: 100%;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-buttons {
+  width: 15%;
+  box-sizing: border-box;
+  height: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background: #f3f2f2;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-buttons button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: left;
+  box-sizing: border-box;
+  background: #f3f2f2;
+  border-bottom: 1px solid #ccc;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-buttons button.active {
+  background: #fff;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-content {
+  width: 85%;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.add-class .elevate-lms-course-builder .option-box .tab-content .tab-item {
+  display: none;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+  gap: 15px;
+}
+
+.add-class
+  .elevate-lms-course-builder
+  .option-box
+  .tab-content
+  .tab-item
+  label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.add-class
+  .elevate-lms-course-builder
+  .option-box
+  .tab-content
+  .tab-item.active {
+  display: flex;
+}
+
+#custom-difficulty-box {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.right-site .form-field {
+  margin-bottom: 20px;
+}
+
+.right-site .form-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.right-site .form-field .button {
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid #012c4146;
+  border-style: dashed;
+  width: 100%;
+  height: 150px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.right-site .form-field input[type="hidden"] {
+  display: none;
+}
+
+/* Preview box */
+#featured_image_preview,
+#intro_video_preview {
+  margin-top: 10px;
+}
+
+#featured_image_preview img,
+#intro_video_preview video {
+  max-width: 80px;
+  height: 80px;
+  width: 100%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  display: block;
+}
+
+/* For video */
+#intro_video_preview video {
+  max-height: 200px;
+}
+
+.right-site .form-field select {
+  width: 100%;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+
+/* Duration Box Styling */
+.duration-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.time-group {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.time-group:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-color: #d1d5db;
+}
+
+.time-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.time-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.time-inputs input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.time-inputs input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+.hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 6px;
+} 
